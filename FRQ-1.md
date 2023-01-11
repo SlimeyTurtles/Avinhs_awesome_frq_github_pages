@@ -10,7 +10,7 @@ p{
 .container {
   width: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .btn {
   margin: 20px auto;
@@ -41,16 +41,16 @@ p{
   border-radius: 50px;
 }
 .btn.rounded .text-green {
-  color: #00F0B5;
+  color: #ffcc00;
   mix-blend-mode: difference;
 }
 .btn.rounded::before {
   border-radius: 50px;
   width: 25%;
-  background: #00F0B5;
+  background: #ffcc00;
 }
 .btn.rounded:hover::before {
-  background: #00F0B5;
+  background: #ffcc00;
   width: 100%;
 }
 
@@ -96,9 +96,9 @@ p{
   height: 56px;
   font-size: 16px;
   font-weight: 400;
-  background: rgba(0, 0, 0, 0.02);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-  color: #000;
+  background: #696969;
+  box-shadow: inset 0 -1px 0 #696969;
+  color: white;
   transition: all 0.15s ease;
 }
 #inp input:hover {
@@ -141,23 +141,23 @@ p{
       // Fetch data from API
       fetch('http://spiderbiters.nighthawkcodingsociety.com/api/calendar/isLeapYear/' + year)
       .then(response => response.json())
-      .then(data =\> {
+      .then(data => {
           console.log(data);
-          result.innerHTML = "Is " + year + " a leap year: " + data.isLeapYear;
+          result.innerHTML = ": " + data.isLeapYear;
       })
   }
 </script>
 <body>
   <div class="container">
-    <p>Is it a leap year?: </p>
+    <p>Is it a leap year?</p>
+    <p id="isLeapYearResult"></p>
+  </div>
+  <div class="container">
     <label for="inp" id="inp">
       <input id="inputYear" class="inp">
       <span class="label">Year</span>
       <span class="focus-bg"></span>
     </label>
-  </div>
-  <div class="container">
     <button onclick="isLeapYear(getYear())" class="btn rounded"><span class="text-green">Check</span></button>
-    <p id="isLeapYearResult"></p>
-  </div>
+  </div> 
 </body>
